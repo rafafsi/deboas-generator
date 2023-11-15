@@ -46,5 +46,5 @@ export const PlayerSchema = new Schema<IPlayer>({
   }
 });
 
-const Player = model<IPlayer>("Player", PlayerSchema);
+const Player = model<IPlayer>("player", PlayerSchema);
 export default Player;

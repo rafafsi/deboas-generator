@@ -1,5 +1,5 @@
 import { Schema, Document, model, Types, Model } from "mongoose";
-import { IPlayer } from "./players";
+import { IPlayer } from "./player";
 
 export interface ITeam extends Document {
   groupName: string;
@@ -24,5 +24,5 @@ export const TeamSchema = new Schema<ITeam, Model<ITeam>>({
   },
 });
 
-export const Team = model<ITeam>("Team", TeamSchema);
+const Team = model<ITeam>("team", TeamSchema);
 export default Team;

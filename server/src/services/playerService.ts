@@ -1,5 +1,5 @@
 import { Request } from "express";
-import Player from "../models/players";
+import Player from "../models/player";
 import mongoose from "mongoose";
 
 export async function createPlayer(req: Request) {
@@ -10,8 +10,7 @@ export async function createPlayer(req: Request) {
       console.log("Player wasnt registered");
     }
     return player;
-  } catch (error) {
-  }
+  } catch (error) {}
 }
 
 export async function findPlayer(req: Request) {
@@ -19,8 +18,7 @@ export async function findPlayer(req: Request) {
     const id = new mongoose.Types.ObjectId(req.params.id);
     const player = await Player.findOne({ _id: id });
     return player;
-  } catch (error) {
-  }
+  } catch (error) {}
 }
 
 export async function deletePlayer(req: Request) {
@@ -28,8 +26,7 @@ export async function deletePlayer(req: Request) {
     const id = new mongoose.Types.ObjectId(req.params.id);
     const player = await Player.findByIdAndDelete({ _id: id });
     return player;
-  } catch (error) {
-  }
+  } catch (error) {}
 }
 
 export async function findAllPlayers(req: Request) {
@@ -43,15 +40,13 @@ export async function findAllPlayers(req: Request) {
       const players = await Player.find({});
       return players;
     }
-  } catch (error) {
-  }
+  } catch (error) {}
 }
 
 export async function updatePlayer(req: Request) {
   try {
-    const filter = req.body    
-    const updatedPlayers = await Player.updateMany(filter, { $set: { confirmed: true } })
-    return updatedPlayers
-  } catch (error) {
-  }
+    const filter = req.body;
+    const updatedPlayers = await Player.updateMany(filter, { $set: { confirmed: true } });
+    return updatedPlayers;
+  } catch (error) {}
 }

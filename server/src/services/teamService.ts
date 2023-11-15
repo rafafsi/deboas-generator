@@ -1,5 +1,5 @@
 import { Request } from "express";
-import Player, { IPlayer } from "../models/players";
+import Player, { IPlayer } from "../models/player";
 
 export async function generate(req: Request) {
   const confirmedPlayers: IPlayer[] = await Player.find({ confirmed: true });
