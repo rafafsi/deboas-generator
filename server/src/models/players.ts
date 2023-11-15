@@ -5,6 +5,7 @@ export interface IPlayer extends Document {
   nickname?: string;
   position: string;
   level: number;
+  confirmed: boolean
 }
 
 export const PlayerSchema = new Schema<IPlayer>({
@@ -38,6 +39,11 @@ export const PlayerSchema = new Schema<IPlayer>({
     default: 2,
     comments: "Player's level",
   },
+  confirmed: { 
+    type: Boolean, 
+    default: false,
+    comments: "Confirmation if the player will play that day."
+  }
 });
 
 const Player = model<IPlayer>("Player", PlayerSchema);
