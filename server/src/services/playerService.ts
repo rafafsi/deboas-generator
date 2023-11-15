@@ -11,7 +11,6 @@ export async function createPlayer(req: Request) {
     }
     return player;
   } catch (error) {
-    console.log("playerService.ts:8 ~ register ~ error:", error);
   }
 }
 
@@ -21,7 +20,6 @@ export async function findPlayer(req: Request) {
     const player = await Player.findOne({ _id: id });
     return player;
   } catch (error) {
-    console.log("playerService.ts:24 ~ findPlayer ~ error:", error);
   }
 }
 
@@ -31,7 +29,6 @@ export async function deletePlayer(req: Request) {
     const player = await Player.findByIdAndDelete({ _id: id });
     return player;
   } catch (error) {
-    console.log("playerService.ts:34 ~ deletePlayer ~ error:", error);
   }
 }
 
@@ -47,6 +44,14 @@ export async function findAllPlayers(req: Request) {
       return players;
     }
   } catch (error) {
-    console.log("playerService.ts:49 ~ findAll ~ error:", error);
+  }
+}
+
+export async function updatePlayer(req: Request) {
+  try {
+    const filter = req.body    
+    const updatedPlayers = await Player.updateMany(filter, { $set: { confirmed: true } })
+    return updatedPlayers
+  } catch (error) {
   }
 }

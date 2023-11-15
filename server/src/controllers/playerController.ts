@@ -1,5 +1,11 @@
 import { Request, Response } from "express";
-import { createPlayer, findPlayer, deletePlayer, findAllPlayers } from "../services/playerService";
+import {
+  createPlayer,
+  findPlayer,
+  deletePlayer,
+  findAllPlayers,
+  updatePlayer,
+} from "../services/playerService";
 
 export async function create(req: Request, res: Response) {
   const player = await createPlayer(req);
@@ -19,4 +25,9 @@ export async function deleteById(req: Request, res: Response) {
 export async function findAll(req: Request, res: Response) {
   const players = await findAllPlayers(req);
   res.status(200).send(players);
+}
+
+export async function updateByFilter(req: Request, res: Response) {
+  const updatedPlayers = await updatePlayer(req);
+  res.status(200).send(updatedPlayers);
 }
